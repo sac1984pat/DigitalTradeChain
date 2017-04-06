@@ -1,0 +1,15 @@
+{
+  "jsonrpc": "2.0",
+  "method": "invoke",
+  "params": {
+      "type": 1,
+      "chaincodeID":{
+          "name":"e035632af4dcdd6afb61477fe1b1fc66e876d3bc0e0e8c610cf7934452ddbc117eef452b47f40d97baaa4d6747334622658e9e439afaf1debd6328d15cfc2a96"
+      },
+      "ctorMsg": {
+         "args":[]
+      },
+      "secureContext": "jim"
+  },
+  "id": 3
+}
