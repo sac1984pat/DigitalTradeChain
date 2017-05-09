@@ -346,7 +346,6 @@ func main() {
 	//doEvery(3*time.Second, helloworld)
 	fmt.Printf("heloo...")
 
-	    
 	if err != nil {
 		fmt.Printf("Error starting Simple chaincode: %s", err)
 	}
