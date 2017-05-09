@@ -345,6 +345,36 @@ func main() {
 	err := shim.Start(new(DtcChaincode))
 	//doEvery(3*time.Second, helloworld)
 	fmt.Printf("heloo...")
+
+	    criticalLevel, _ := shim.LogLevel("CRITICAL")
+        errorLevel, _ := shim.LogLevel("ERROR")
+        warningLevel, _ := shim.LogLevel("WARNING")
+        noticeLevel, _ := shim.LogLevel("NOTICE")
+        infoLevel, _ := shim.LogLevel("INFO")
+        debugLevel, _ := shim.LogLevel("DEBUG")
+
+
+		        //Logging level at the shim level
+        shim.SetLoggingLevel(infoLevel)
+ 
+        //Create a logger instance
+        myLogger := shim.NewLogger("SampleChaincodeLogger")
+
+		        //Set logging level on logger instance
+        myLogger.SetLevel(infoLevel)
+ 
+        //Check logging level
+        fmt.Println(myLogger.IsEnabledFor(infoLevel))
+ 
+        //Log statements
+        myLogger.Info("Info Message")
+        myLogger.Critical("Critical Message")
+        myLogger.Warning("Warning Message")
+        myLogger.Error("Error Message")
+        myLogger.Notice("Notice Message")
+        myLogger.Debug("Debug Message")
+
+
 	if err != nil {
 		fmt.Printf("Error starting Simple chaincode: %s", err)
 	}
