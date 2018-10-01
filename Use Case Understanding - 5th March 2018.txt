@@ -1,0 +1,194 @@
+Shen, Sharon <sharon.shen@rbc.com>
+Yeddu, Kranthi Kumar (CWM-NR) <kranthikumar.yeddu@rbc.com>
+Tadathilplackal, Johnson Joseph (CWM-NR) <johnsonjoseph.tadathilplackal@rbc.com>
+
+Business
+Reporting statements - House
+Regulatory requirement
+Issuer and Custodian - Finacial Transactions
+
+Perfomance/Regulatory consolidated reporting for statements
+summarize
+
+Clients
+- Open Acct (Customer) - Bank Acct without investment counsellor
+- Customer with Counsellor
+- RBC IC /IA Investment Counsellor/Advisor
+- Book Keeping System
+
+Customer > Portfolio Mngmnt System > 
+
+Custodian Management System
+Portfolio Management System
+Perfomance System
+(FInancial Managment System)
+
+-BroadRidge is third party from where get
+
+Current System has 3 types of actors who require consolidated adn summarized reporting statments. Those 3 actors are-
+- Bank Customer (without investment counsellor)
+- Bank Customer with Counsellor
+- RBC IC(Investment Counsellor) or IA (Investment Advisor)
+
+Transactions data, trading and holding data of these customers get stored on below systems-
+- Custodian Management System
+- Portfolio Management System
+- Perfomance System (FMC - Financial Management Control System)
+
+Broadwage is third party book keeping system and FMC system's data gets updated based on data provided by Broadwage. 
+It is very costly affair to get everytime data from Broadwage.
+
+Fund Operator from bank consolidates customer specific data from 3 management systems mentioned above based on some 
+predefined rules and stores it into sql database from where statement reports gets generated. 
+These reports are scheduled to generate either everyday/weekly/monthly/quarterly.
+
+
+Current Process Workflow:-
+Customer > Counsellor > Bank > Custodian Management System / Portfolio Management System / (Broadwage >) Financial Management System > 
+	Fund Operator > Apply Rules > SQL Database > Statement Reporting
+	
+Customer > Bank > Custodian Management System / Portfolio Management System / (Broadwage >) Financial Management System > 
+	Fund Operator > Apply Rules > SQL Database > Statement Reporting
+	
+Portfolio Managment System does KYC abd details of customer - demographic data / asset management details
+BroadRidge - Account transactions System 
+
+(daily basis data flown to portfolio management system
+FMC Pacer (Portfolio Accounting System)
+FMC Perfomance Calculation System (Performance of Portfolio)
+
+FMC Perfomance/Transactions System > Statement System (jobbs) > SQL Database
+
+Printing and mailing is done outside RBC
+
+Driver File is given to Symcore(Printing and MMailing company) 
+
+
+1. How much time it takes to generate report? 24-36 hrs
+2. What are the various rules operator applies to consolidate the data and store it into SQL database?
+3. At what stage manual processes and paperwork are required in current flow? 
+
+Customer > Counsellor > Portfolip Management System (Personal details for KYC /demographic data / asset management details)
+> BroadRidge System (Transaction System) > Daily Batch Process > FMC Pacer (Portfolio Accounting System) > FMC Perfomance Calculation System (Perfomance of Portfolio - based on rules defined)
+> Statement System (jobs to fetch transaction details from FMC to SQL Database > Statement Database > Jobs to generate driver file and send it to Symcoree for printing and mailing
+
+6th March Questions:-
+1. How KYC of customer is been performed in Portfolio Management System? Is it done by third party? Where id proof docs been stored?
+2. If FMC and Ststement Systems work on data provided by Broadridge and Portfoliio Management System then can we eliminate these 2 systems?
+3. If FMC and Statement Systems need to be eliminited then detailed understanding of these 2 systems is required.
+
+
+How to get rid of symcor system?Business is paying huge money to symcor for printing andd mailing pdf.
+Trade confirmations
+Wealth Management 
+
+7th March 2018:-
+Use Cases
+1.Client onboarding and profiling :-
+2. Model management and trade order generation
+
+
+Audit Trail:-
+Rebalancing of Fund
+Feasibilty of Softwares on RBC Environment
+
+19th March:-
+1. Data Purging - Cleaning / destroying of data so that storage space can be used for other use. Data which is not used by business
+ processes can be purged.
+ 
+ 
+Questions:-
+1. Can we have detailed business workflow of current Fund level rebalancing system?
+2. How many participants involved in the current process with their roles and responsibilities?
+2. Is this process depenedent on any third parties?
+3. Is there any manual processes involved?
+4. Can we automate any approval(manual) flow using smart contract?
+5. What are the pain points in current system? 
+6. How we can solve using blockchain? (This can be formed basis on pain points of current system)
+7. Which tool/system is been used for workflow management?
+
+-- More secured - txn signing,cryptogrphy
+-- Consensus - Each node will execute smart contract
+-- Performance - will slow down
+-- Robust and Disintermediated system - remove dependencies from other tools
+-- Data Integrity (accuracy and consistency of data) - data stored on blockchain is secured and consented by majority of participants
+
+
+Fund rebalancing - 
+
+Fund Accounting
+1. Get the details from other system and store into blockchain
+2. "Fund Manager" adjust the trade details
+3. "Fund Administartor" approves the details
+
+21st March:---------
+Hi Johnson,
+
+Based on yesterdays discussion and with some of my assumptions, I have prepared workflow diagram attached in this mail.
+
+I wont suggest to use blockchain for this use case just to get flavour of immutability and audit trail features. 
+
+I am exploring various options so that this case study can become more relevant for blockchain. But it wont be possible without
+detailed understanding of business workflow. 
+
+Below mentioned questions will help to decide on applying blockchain for this use.
+
+1. Fund Manager and Fund Administrator will work from which geographies? Are they part of same bank?
+2. If I assume Fund Manager and Administartor belong to same bank then is there any other third party involved in this process?
+3. Who is going to consume or use the adjusted data from Fund Balancing System? Are there any third parties or consumers referring this data?
+4. Could "Auditor" become part of this network? "Auditor" will have only read only access and can pull historical data from ledger. 
+
+Above questions will help to identify another participant(node). Assuming Fund Manager and Fund Administartor are part of same bank can be part of single node.
+
+Below questions focus on use of smart contracts in this use case.
+
+1. What are the business rules/validations that could be applied before dumping details from Accounting System to Blockchain Ledger ? (Smart Contract)
+2. Is this a daily process to get fund details from accounting system to fund balancing system?
+3. What are the adjustments been done by Fund Manager while updating fund details?
+4. Which details Fund Administrator validates before approving fund adjustment details?
+5. Automate the Fund Adjustment flow using smart contract.
+		- Develop an api to get updated rates of fund
+		- Fund Manager compares fund rates and submit the fund adjusted request.Smart contract compares updated fund details with fund rates 
+		  fetched by newly developed api. This smart contract make sure that Fund Manager is not tweaking with the data.		  
+		- Smart contract compares updated fund details with fund rates fetched by newly developed api will also get executed while Fund Administrator is 
+		  approving the request.
+	
+	
+3. Can we automate fund adjustment flow ?
+	- Develop an api to get updated rates of fund (calling api and get rates is part of smart contract)
+	- When Fund Manager logs in, he/she will be displayed old and updated rates on portal. 
+	- If there is no change in rate then message will be displayed to Fund Manager.
+	- If change in fund rates then Fund Manager will apply updated rates and submit the adjustments.
+	- Rather than verifying rates on another portal this application will suggest updated rate.
+4. Which details Fund Administartor checks and adjusts before approving adjustment request?
+	- Assuming Fund Administartor checks the adjustment against updated rates from another portal.
+	- Going with above assumption , Fund Administartor will also be displayed the updated rates using api developed in point 3 
+	- Fund Manager approves/rejects the request and adds comments.
+	
+--  Another approach is to validate the adjustment done by Fund Manager or Fund Administrator against the rates provided newly 
+	developed api. (Smart Contract)
+	
+22nd March
+- Blockchain solutions involve a multiparty ecosystem and consortium kind of model.
+- Storing large sized documents and/or data entities on blockchain is counter-productive as all nodes need to get synced up every time.
+- One of the biggest roadblocks to onboarding of participants is the inability of consortium members to arrive on common rules of engagement
+- Blockchain cannot and should not be seen as technology replacement only. The objective should be to achieve business process improvement and 
+  efficiency
+- Blockchains are great when multiple parties need to read the same information but for whatever reason there can’t be or shouldn’t be any specific 
+  individual party in control of that data.
+  
+23rd March---
+Hi Sharon,
+
+Blockchain is distributed ledger technology and blockchain solutions involve a multiparty ecosystem and consortium kind of model.
+As I mentioned in my previous mail use case with current requirements is not suitable to use Blockchain Technology.
+In current use case Fund Manager and Fund Administrator are part of RBC bank and these users can become part of single node. 
+To form a consortium we need at least another third party node which can build trust and transparency with the help of consensus.
+
+If you can help by answering the questions I asked then we can may think of using Blockchain for this use case.
+
+Is Fund Manager and Fund Administrator trust each other in current system?
+
+Blockchain vs database:----
+- Blockchains have a decisive advantage when it comes to providing a robust, fault-tolerant way to store critical data.
+- Relational databases seem to have a decisive advantage when it comes to performance. 
